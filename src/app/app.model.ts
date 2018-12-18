@@ -4,8 +4,9 @@ export class AppModel {
   constructor(
     public title?: string,
     public checked: boolean = false,
+    public visible: boolean = false,
     public category?: string,
-    public text?: string
+    public text?: string,
     //ha kérdőjelet rakunk ki a típusmeghatározás elé, akkor paraméter nélkül is meg lehet hívni (nem kötelező használni a változót) -> undefined lesz
   ) 
   {
