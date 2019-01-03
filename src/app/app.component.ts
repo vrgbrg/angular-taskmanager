@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { AppModel, AppInterface } from './app.model';
 import { SignUpModel } from './sign-up.model';
-import { setTheme } from 'ngx-bootstrap/utils';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,8 @@ export class AppComponent {
   public fullnameInvalid = true;
   public emailInvalid = true;
 
+  modalRef: BsModalRef;
+
   public taskModel = new AppModel();
 
   public signUpModel: SignUpModel = new SignUpModel();
@@ -21,8 +23,13 @@ export class AppComponent {
   public appImpl: AppInterface = <AppInterface>{};
 
 
-  constructor() {
-    //setTheme('bs4');
+  constructor(
+    private modalService: BsModalService
+  ) {
+  }
+
+  public showNewTask(modalContent: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(modalContent);
   }
 
   public showAppModelValue(event: AppModel) {

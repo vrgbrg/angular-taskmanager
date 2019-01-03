@@ -1,4 +1,10 @@
-<h1 class="display-4">Flow Task Manager</h1>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Flow Task Manager</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Home</a>
+  </nav>
+  <a class="btn btn-outline-primary" href="#">Sign up</a>
+</div>
 
 <div class="container">
   <div class="row">
@@ -16,24 +22,101 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-        <form class="form-inline">
-            <label class="sr-only" for="inlineFormInputName2" for="fullname">Fullname</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Fullname" name="fullname" id="fullname" [(ngModel)]="signUpModel.fullname" (blur)="validateFullname($event)">
-            <label class="sr-only" for="inlineFormInputGroupUsername2" for="email">E-mail</label>
-            <div class="input-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="E-mail" name="email" id="email" [(ngModel)]="signUpModel.email" (change)="emailValidate($event)">
-            </div>
-            
-            <label class="sr-only" for="inlineFormInputName2" for="password">Password</label>
-            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Password" name="password" id="password" [(ngModel)]="signUpModel.password">
-            
-            <button type="submit" class="btn btn-primary mb-2" (click)="signUp()">Sign up</button>
-          </form>
-          <p *ngIf="fullnameInvalid" style="color: red" class="alert alert-danger"> Helytelen! Nagybetűvel kezdődjön! </p>
-          <p *ngIf="emailInvalid" style="color: red" class="alert alert-danger"> Helytelen e-mail formátum! </p>
+      <form class="form-inline">
+        <label class="sr-only" for="inlineFormInputName2" for="fullname">Fullname</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Fullname" name="fullname"
+          id="fullname" [(ngModel)]="signUpModel.fullname" (blur)="validateFullname($event)">
+        <label class="sr-only" for="inlineFormInputGroupUsername2" for="email">E-mail</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="E-mail" name="email"
+            id="email" [(ngModel)]="signUpModel.email" (change)="emailValidate($event)">
+        </div>
+
+        <label class="sr-only" for="inlineFormInputName2" for="password">Password</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Password" name="password"
+          id="password" [(ngModel)]="signUpModel.password">
+
+        <button type="submit" class="btn btn-primary mb-2" (click)="signUp()">Sign up</button>
+      </form>
+      <p *ngIf="fullnameInvalid" style="color: red" class="alert alert-danger"> Helytelen formátum! Nagybetűvel kezdődjön! </p>
+      <p *ngIf="emailInvalid" style="color: red" class="alert alert-danger"> Helytelen e-mail formátum! </p>
     </div>
   </div>
 </div>
+
+<hr>
+<h2 class="display-4"> Add new task
+  <a (click)="showNewTask(add_task_modal)"><button type="submit" class="btn btn-secondary mb-2">+</button></a>
+</h2>
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header">
+        <h2 class="my-0 font-weight-normal">Card name</h2>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title pricing-card-title">List values: </h4>
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+        </ul>
+        <button type="button" (click)="editList(2)" class="btn btn-lg btn-block btn-outline-primary">Edit list</button>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+          <li><a class="text-muted" href="#">Random feature</a></li>
+          <li><a class="text-muted" href="#">Team feature</a></li>
+          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+          <li><a class="text-muted" href="#">Another one</a></li>
+          <li><a class="text-muted" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+          <li><a class="text-muted" href="#">Resource name</a></li>
+          <li><a class="text-muted" href="#">Another resource</a></li>
+          <li><a class="text-muted" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <ng-template #add_task_modal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Add new task</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
+    </div>
+  </ng-template>
