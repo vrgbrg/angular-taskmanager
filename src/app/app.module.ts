@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule }  from '@angular/forms';
 import { CreateEditTaskComponent } from './create-edit-task/create-edit-task.component';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CreateEditTaskComponent } from './create-edit-task/create-edit-task.com
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ButtonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

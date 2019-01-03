@@ -1,25 +1,39 @@
-<h1>Flow Task Manager</h1>
+<h1 class="display-4">Flow Task Manager</h1>
 
-<app-create-edit-task [model]="taskModel"></app-create-edit-task>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
 
-<form>
-  <h2> Sign up</h2>
-    <label for="fullname">Fullname: </label>
-    <!-- <input type="text" name="fullname" id="fullname" [(ngModel)]="name">
-    <p *ngIf="name[0] != name[0].toUpperCase()"> Nagybetűvel kezdődjön! </p> -->
-    <input type="text" name="fullname" id="fullname" [(ngModel)]="signUpModel.fullname" (blur)="validateFullname($event)">
-    <p *ngIf="fullnameInvalid" style="color: red"> Nagybetűvel kezdődjön! </p>
-    <br>
-    <label for="email">E-mail: </label>
-    <input type="text" name="email" id="email" [(ngModel)]="signUpModel.email" (change)="emailValidate($event)">
-    <p *ngIf="emailInvalid" style="color: red"> Helytelen e-mail formátum! </p>
-    <!--  <input type="text" name="email" id="email" [(ngModel)]="email">
-    <p *ngIf="!emailValidate()"> .com-mal végződjön! </p> -->
-    <br>
-    <label for="password">Password: </label>
-    <input type="text" name="password" id="password" [(ngModel)]="signUpModel.password">
-    <p class="{{passwordInvalid}}">{{passwordInvalid}}</p>
-    <!-- <input type="text" name="password" id="password" [(ngModel)]="password" [ngStyle]="{'background-color': passwordColor()}"> -->
-    <br>
-  <button (click)="signUp()">Sign up</button>
-</form>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h2 class="display-4"> Sign up</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <form class="form-inline">
+            <label class="sr-only" for="inlineFormInputName2" for="fullname">Fullname</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Fullname" name="fullname" id="fullname" [(ngModel)]="signUpModel.fullname" (blur)="validateFullname($event)">
+            <label class="sr-only" for="inlineFormInputGroupUsername2" for="email">E-mail</label>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">@</div>
+              </div>
+              <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="E-mail" name="email" id="email" [(ngModel)]="signUpModel.email" (change)="emailValidate($event)">
+            </div>
+            
+            <label class="sr-only" for="inlineFormInputName2" for="password">Password</label>
+            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Password" name="password" id="password" [(ngModel)]="signUpModel.password">
+            
+            <button type="submit" class="btn btn-primary mb-2" (click)="signUp()">Sign up</button>
+          </form>
+          <p *ngIf="fullnameInvalid" style="color: red" class="alert alert-danger"> Helytelen! Nagybetűvel kezdődjön! </p>
+          <p *ngIf="emailInvalid" style="color: red" class="alert alert-danger"> Helytelen e-mail formátum! </p>
+    </div>
+  </div>
+</div>

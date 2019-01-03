@@ -1,0 +1,35 @@
+<form class="form-inline">
+  <label class="sr-only" for="inlineFormInputName2">Title</label>
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Title" name="title" id="title"
+    [(ngModel)]="appModel.title" [disabled]="appModel.checked === true">
+  <div class="form-check mb-2 mr-sm-2">
+    <input class="form-check-input" type="checkbox" name="checked" id="checked" [(ngModel)]="appModel.checked">
+    <label class="form-check-label" for="inlineFormCheck">
+      Checked
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Show me</button>
+</form>
+<form>
+    <div>
+        <div>
+        <input #visible type="checkbox" name="visible" (change)="0" class="form-check-input">
+        <label class="form-check-label" for="inlineFormCheck">Visible</label>
+      </div>
+        <div *ngIf="visible.checked"><label class="my-1 mr-2" for="inlineFormCustomSelectPref">Category: </label>
+          <select class="custom-select my-1 mr-sm-2" name="categories" placeholder="Category" id="categories" [(ngModel)]="appModel.category" [disabled]="appModel.checked === true"
+            [ngClass]="{'k': appModel.category == 'Kaja', 'p': appModel.category == 'Pia', 'n': appModel.category == 'Nők'}">
+            <option value="Kaja">Kaja</option>
+            <option value="Pia">Pia</option>
+            <option value="Nők">Nők</option>
+          </select>
+          <!-- <p>{{appModel.category}}</p> -->
+          <label class="sr-only" for="inlineFormInputName2">Text</label>
+          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Text" name="text" id="text" [(ngModel)]="appModel.text" [disabled]="appModel.checked === true">
+          <!-- <p>{{appModel.text}}</p> -->
+        </div>
+      </div>
+      <!-- [ngStyle]="{'background-color': getCheckboxColor()}"-->
+      <div [ngClass]="{'danger': appModel.checked}"> </div>
+</form>

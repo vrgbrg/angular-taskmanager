@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AppModel, AppInterface } from './app.model';
 import { SignUpModel } from './sign-up.model';
+import { setTheme } from 'ngx-bootstrap/utils';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,13 @@ export class AppComponent {
 
   public appImpl: AppInterface = <AppInterface>{};
 
-  constructor() {
 
+  constructor() {
+    //setTheme('bs4');
   }
 
-  public showAppModelValue() {
-    console.log(this.taskModel);
+  public showAppModelValue(event: AppModel) {
+    console.log(event);
   }
 
   changeChecked(isChecked: Event) {
@@ -40,19 +42,18 @@ export class AppComponent {
 
   }
 
-  
+
   public validateFullname(event: any) {
-    if(!event.target.value) {
+    if (!event.target.value) {
       this.fullnameInvalid = true;
       return;
     }
     const fullname = event.target.value;
     this.fullnameInvalid = !(fullname.charAt(0) === fullname.charAt(0).toUpperCase());
-
   }
-  
+
   emailValidate(event: any) {
-    if(!event.target.value) {
+    if (!event.target.value) {
       this.emailInvalid = true;
       return;
     }
