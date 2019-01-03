@@ -9,7 +9,7 @@
     </label>
   </div>
 
-  <button type="submit" class="btn btn-primary mb-2">Show me</button>
+  <button type="submit" class="btn btn-primary mb-2" (click)="showAppModelValue()">Save</button>
 </form>
 <form>
     <div>
@@ -26,7 +26,7 @@
           </select>
           <!-- <p>{{appModel.category}}</p> -->
           <label class="sr-only" for="inlineFormInputName2">Text</label>
-          <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Text" name="text" id="text" [(ngModel)]="appModel.text" [disabled]="appModel.checked === true">
+          <textarea type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Text" name="text" id="text" [(ngModel)]="appModel.text" [disabled]="appModel.checked === true"></textarea>
           <!-- <p>{{appModel.text}}</p> -->
         </div>
       </div>

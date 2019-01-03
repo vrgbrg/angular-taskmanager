@@ -14,7 +14,8 @@ export class AppComponent {
   public fullnameInvalid = true;
   public emailInvalid = true;
 
-  modalRef: BsModalRef;
+  public modalRef: BsModalRef;
+  public tasks: AppModel[] = [];
 
   public taskModel = new AppModel();
 
@@ -29,11 +30,19 @@ export class AppComponent {
   }
 
   public showNewTask(modalContent: TemplateRef<any>) {
+    this.taskModel = new AppModel();
     this.modalRef = this.modalService.show(modalContent);
   }
 
   public showAppModelValue(event: AppModel) {
-    console.log(event);
+    this.modalRef.hide();
+    // console.log(event);
+    this.tasks.push(event);
+  }
+
+  public editList(index: number, modalContent: TemplateRef<any>) {
+    this.taskModel = this.tasks[index];
+    this.modalRef = this.modalService.show(modalContent)
   }
 
   changeChecked(isChecked: Event) {

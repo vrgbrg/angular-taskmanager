@@ -52,20 +52,15 @@
   <a (click)="showNewTask(add_task_modal)"><button type="submit" class="btn btn-secondary mb-2">+</button></a>
 </h2>
 <div class="container">
-  <div class="card-deck mb-3 text-center">
+  <div  *ngFor="let task of tasks; let i = index" class="card-deck mb-3 text-center">
     <div class="card mb-4 shadow-sm">
       <div class="card-header">
-        <h2 class="my-0 font-weight-normal">Card name</h2>
+        <h2 class="my-0 font-weight-normal">{{ task.title }}</h2>
       </div>
       <div class="card-body">
-        <h4 class="card-title pricing-card-title">List values: </h4>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>Item 1</li>
-          <li>Item 2</li>
-          <li>Item 3</li>
-          <li>Item 4</li>
-        </ul>
-        <button type="button" (click)="editList(2)" class="btn btn-lg btn-block btn-outline-primary">Edit list</button>
+        <h4 class="card-title pricing-card-title">Category: </h4>
+        <p> {{ task.text }}</p>
+        <button type="button" (click)="editList(i, add_task_modal)" class="btn btn-lg btn-block btn-outline-primary">Edit list</button>
       </div>
     </div>
   </div>
@@ -74,7 +69,6 @@
   <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">
       <div class="col-12 col-md">
-        <img class="mb-2" src="../../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
         <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
       </div>
       <div class="col-6 col-md">
@@ -117,6 +111,6 @@
       </button>
     </div>
     <div class="modal-body">
-      <app-create-edit-task [model]="taskModel" (show)="showAppModelValue($event)"></app-create-edit-task>
+      <app-create-edit-task [model]="taskModel" (save)="showAppModelValue($event)"></app-create-edit-task>
     </div>
   </ng-template>
