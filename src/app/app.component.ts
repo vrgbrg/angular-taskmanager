@@ -2,6 +2,7 @@ import { Component, TemplateRef } from '@angular/core';
 import { AppModel, AppInterface } from './app.model';
 import { SignUpModel } from './sign-up.model';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { TaskService } from './services/task.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  public fullname?: string = '';
-  public password?: string = '';
+  public fullname = '';
+  public password = '';
   public fullnameInvalid = true;
   public emailInvalid = true;
+
+  public rocketData: string[];
 
   public modalRef: BsModalRef;
   public tasks: AppModel[] = [];
@@ -25,7 +28,8 @@ export class AppComponent {
 
 
   constructor(
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private taskService: TaskService
   ) {
   }
 
@@ -42,7 +46,7 @@ export class AppComponent {
 
   public editList(index: number, modalContent: TemplateRef<any>) {
     this.taskModel = this.tasks[index];
-    this.modalRef = this.modalService.show(modalContent)
+    this.modalRef = this.modalService.show(modalContent);
   }
 
   changeChecked(isChecked: Event) {
@@ -90,6 +94,13 @@ export class AppComponent {
 
   public signUp() {
 
+  }
+
+  public getRocketData() {
+    this.taskService.getRockets().subscribe((response) => {
+      // console.log(response);
+      this.rocketData = response.map(rocket => rocket.name);
+    });
   }
 
 }

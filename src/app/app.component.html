@@ -114,3 +114,8 @@
       <app-create-edit-task [model]="taskModel" (save)="showAppModelValue($event)"></app-create-edit-task>
     </div>
   </ng-template>
+
+  <button class="btn btn-warning" (click)="getRocketData()">Get Rocket</button>
+  <ul>
+    <li *ngFor="let data of rocketData">{{data}}</li>
+  </ul>
